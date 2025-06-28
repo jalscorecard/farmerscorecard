@@ -50,41 +50,36 @@ app.post("/api/submit", async (req, res) => {
       return isNaN(num) ? null : num;
     };
 
-    const query = `
-      INSERT INTO farmer_submissions (
-        fullName, email, whatsapp, date, farmName, mapLink, plotsCount,
-        q1_1, q1_2, q1_3, q2_1, q2_2, q3_1, q3_2, q4_1, q4_2, q5_1, q5_2,
-        score_soil_health, score_biodiversity, score_pest_management,
-        score_water_management, score_livestock
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23)
-      RETURNING id
-    `;
+const query = `
+  INSERT INTO farmer_submissions (
+    fullName, email, whatsapp, date, farmName, mapLink, plotsCount,
+    q1_1, q1_2, q1_3, q2_1, q2_2, q3_1, q3_2, q4_1, q4_2, q5_1, q5_2
+  ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+  RETURNING id
+`;
 
-    const values = [
-      req.body.fullName,
-      req.body.email,
-      req.body.whatsapp || null,
-      req.body.date || new Date().toISOString(),
-      req.body.farmName || null,
-      req.body.mapLink || null,
-      toNumber(req.body.plotsCount),
-      toNumber(req.body.q1_1),
-      toNumber(req.body.q1_2),
-      toNumber(req.body.q1_3),
-      toNumber(req.body.q2_1),
-      toNumber(req.body.q2_2),
-      toNumber(req.body.q3_1),
-      toNumber(req.body.q3_2),
-      toNumber(req.body.q4_1),
-      toNumber(req.body.q4_2),
-      toNumber(req.body.q5_1),
-      toNumber(req.body.q5_2),
-      toNumber(req.body.score_soil_health),
-      toNumber(req.body.score_biodiversity),
-      toNumber(req.body.score_pest_management),
-      toNumber(req.body.score_water_management),
-      toNumber(req.body.score_livestock)
-    ];
+
+const values = [
+  req.body.fullName,
+  req.body.email,
+  req.body.whatsapp || null,
+  req.body.date || new Date().toISOString(),
+  req.body.farmName || null,
+  req.body.mapLink || null,
+  toNumber(req.body.plotsCount),
+  toNumber(req.body.q1_1),
+  toNumber(req.body.q1_2),
+  toNumber(req.body.q1_3),
+  toNumber(req.body.q2_1),
+  toNumber(req.body.q2_2),
+  toNumber(req.body.q3_1),
+  toNumber(req.body.q3_2),
+  toNumber(req.body.q4_1),
+  toNumber(req.body.q4_2),
+  toNumber(req.body.q5_1),
+  toNumber(req.body.q5_2)
+];
+
 
     const result = await client.query(query, values);
     await client.query("COMMIT");
