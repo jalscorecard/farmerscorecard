@@ -98,36 +98,25 @@ function App() {
   const handleSubmitDetailedForm = async () => {
     setIsSubmitting(true);
     try {
-      const average = (values) => {
-        const valid = values.filter((v) => typeof v === "number");
-        if (valid.length === 0) return 0;
-        return valid.reduce((sum, v) => sum + v, 0) / valid.length;
-      };
-
-      const submissionData = {
-        fullName: form.fullName,
-        email: form.email,
-        whatsapp: form.whatsapp,
-        date: form.date || new Date().toISOString(),
-        farmName: form.farmName,
-        mapLink: form.mapLink,
-        plotsCount: form.plotsCount,
-        q1_1: form.q1_1,
-        q1_2: form.q1_2,
-        q1_3: form.q1_3,
-        q2_1: form.q2_1,
-        q2_2: form.q2_2,
-        q3_1: form.q3_1,
-        q3_2: form.q3_2,
-        q4_1: form.q4_1,
-        q4_2: form.q4_2,
-        q5_1: form.q5_1,
-        q5_2: form.q5_2,
-        score_soil_health: average([form.q1_1, form.q1_2, form.q1_3]),
-        score_biodiversity: average([form.q2_1, form.q2_2]),
-        score_pest_management: average([form.q3_1, form.q3_2]),
-        score_water_management: average([form.q4_1, form.q4_2]),
-        score_livestock: average([form.q5_1, form.q5_2]),
+const submissionData = {
+  fullName: form.fullName,
+  email: form.email,
+  whatsapp: form.whatsapp,
+  date: form.date || new Date().toISOString(),
+  farmName: form.farmName,
+  mapLink: form.mapLink,
+  plotsCount: form.plotsCount,
+  q1_1: form.q1_1,
+  q1_2: form.q1_2,
+  q1_3: form.q1_3,
+  q2_1: form.q2_1,
+  q2_2: form.q2_2,
+  q3_1: form.q3_1,
+  q3_2: form.q3_2,
+  q4_1: form.q4_1,
+  q4_2: form.q4_2,
+  q5_1: form.q5_1,
+  q5_2: form.q5_2
       };
 
       const response = await fetch("https://farmerbackend-kzaw.onrender.com/api/submit", {
