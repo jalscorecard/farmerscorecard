@@ -791,10 +791,10 @@ const Success = ({ form, sections, onRestart }) => {
                         <TableCell>{answerText}</TableCell>
                    <TableCell>
                       {q.notApplicableValue && val === q.notApplicableValue
-                      ? "-"
-                      : val !== undefined && !isNaN(val)
-                      ? `${((Number(val) / 4) * 100).toFixed(0)}%`
-                      : "N/A"}
+                         ? "-"
+                          : val !== undefined
+                         ? val
+                          : "N/A"}
                     </TableCell>
                       </TableRow>
                     );
