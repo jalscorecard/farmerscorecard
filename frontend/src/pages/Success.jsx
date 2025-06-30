@@ -347,7 +347,7 @@ const Success = ({ form, sections, onRestart }) => {
     let startY = bannerBase64 ? 120 : 40;
 
     const slogan =
-      "The driving force behind Jalsmruti is empowering communities to restore India's cherished legacy — a land that was once celebrated as 'Sujalaam Sufalaam', abundant in water and lush vegetation.";
+      "Jalsmruti is empowering communities to restore India's cherished legacy — a land that was once celebrated as 'Sujalaam Sufalaam', abundant in water and lush vegetation.";
 
     doc.setFontSize(14);
     doc.setFont("helvetica", "normal");
