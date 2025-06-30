@@ -20,8 +20,8 @@ function Page3({ onNext, onBack, form }) {
   const validateField = (name, value) => {
     switch (name) {
       case "mapLink":
-        if (
-          !/^https?:\/\/(www\.)?(google\.com\/maps|goo\.gl\/maps|maps\.app\.goo\.gl)/.test(value)
+        if (value.trim() !== "" && 
+            !/^https?:\/\/(www\.)?(google\.com\/maps|goo\.gl\/maps|maps\.app\.goo\.gl)/.test(value)
         ) {
           return "Please enter a valid Google Maps link";
         }
@@ -75,7 +75,7 @@ function Page3({ onNext, onBack, form }) {
             helperText={error.mapLink}
             fullWidth
             margin="normal"
-            required
+            // Remove required here to allow empty input
           />
 
           <TextField
