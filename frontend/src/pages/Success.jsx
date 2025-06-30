@@ -176,16 +176,15 @@ const sections = [
 
 // Helper functions
 function getColorForScore(score) {
-  if (score <= 1) {
-    return interpolateColor("#e74c3c", "#f39c12", score);
-  } else if (score <= 2) {
-    return interpolateColor("#f39c12", "#f1c40f", score - 1);
-  } else if (score <= 3) {
-    return interpolateColor("#f1c40f", "#27ae60", score - 2);
-  } else {
-    return "#27ae60";
-  }
+  const percentage = score * 25; 
+
+  if (percentage <= 20) return "#e74c3c";
+  if (percentage <= 40) return "#e67e22"; 
+  if (percentage <= 60) return "#f1c40f"; 
+  if (percentage <= 80) return "#27ae60"; 
+  return "#2980b9"; 
 }
+
 
 function calculateSectionScore(section, form) {
   let total = 0,
@@ -252,9 +251,13 @@ function hexToRgb(hex) {
 }
 
 function getMaturityLevel(score) {
-  if (score < 1) return "Front Runner";
-  else if (score < 2) return "Performer";
-  else return "Achiever";
+  const percentage = score * 25;
+
+  if (percentage <= 20) return "Aspirant";
+  if (percentage <= 40) return "Aspiring Performer";
+  if (percentage <= 60) return "Performer";
+  if (percentage <= 80) return "Front Runner";
+  return "Achiever";
 }
 
 const Success = ({ form, sections, onRestart }) => {
@@ -724,7 +727,7 @@ const Success = ({ form, sections, onRestart }) => {
         }}
       >
         <Typography variant="h5" gutterBottom>
-          Overall Farmer Agri Score: {totalScore.toFixed(2)}
+          Overall Farmer Agri Score: {(totalScore * 25).toFixed(2)}%
         </Typography>
         <Typography variant="h6">Maturity Level: {maturity}</Typography>
       </Box>
@@ -751,7 +754,7 @@ const Success = ({ form, sections, onRestart }) => {
               }}
             >
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                {section.title} (Average Score: {sectionScore.toFixed(2)})
+                {section.title} (Average Score: {(sectionScore * 25).toFixed(2)}%)
               </Typography>
             </Box>
 
@@ -786,11 +789,13 @@ const Success = ({ form, sections, onRestart }) => {
                       <TableRow key={q.key}>
                         <TableCell>{q.label}</TableCell>
                         <TableCell>{answerText}</TableCell>
-                        <TableCell>
-                          {q.notApplicableValue && val === q.notApplicableValue
-                            ? "-"
-                            : val}
-                        </TableCell>
+                   <TableCell>
+                      {q.notApplicableValue && val === q.notApplicableValue
+                      ? "-"
+                      : val !== undefined && !isNaN(val)
+                      ? `${((Number(val) / 4) * 100).toFixed(0)}%`
+                      : "N/A"}
+                    </TableCell>
                       </TableRow>
                     );
                   })}
