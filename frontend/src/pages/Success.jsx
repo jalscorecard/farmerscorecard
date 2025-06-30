@@ -560,10 +560,12 @@ const Success = ({ form, sections, onRestart }) => {
     doc.setFontSize(13);
     doc.setFont(undefined, "normal");
     const services = [
-      "• Restoring soil and water health in Agri farms",
-      "• Market connect of Agri Supply of Regen Agri Farmers with Corporate Demand for Agri Inputs",
-      "• Hand holding farmers to Regen farming practices",
-    ];
+         "• Restoring soil and water health in Agri farms",
+         "• Market connect of Agri Supply of Regen Agri Farmers with Corporate Demand " +
+         "for Agri Inputs",
+         "• Hand holding farmers to Regen farming practices",
+       ];
+
 
     services.forEach((service) => {
       doc.text(service, 50, startY);
