@@ -176,13 +176,13 @@ const sections = [
 
 // Helper functions
 function getColorForScore(score) {
-  const percentage = score * 20;
+  const percentage = score * 20; 
   
-  if (percentage <= 20) return "#e74c3c";
-  if (percentage <= 40) return "#e67e22";
+  if (percentage <= 20) return "#e74c3c"; 
+  if (percentage <= 40) return "#e67e22"; 
   if (percentage <= 60) return "#f1c40f";
   if (percentage <= 80) return "#27ae60";
-  return "#2980b9";
+  if (percentage <= 100) return "#2980b9";
 }
 
 
@@ -255,7 +255,7 @@ function getMaturityLevel(score) {
   if (percentage <= 40) return "Performing Aspirant";
   if (percentage <= 60) return "Performer";
   if (percentage <= 80) return "Front Runner";
-  return "Achiever";
+  if (percentage <= 100)return "Achiever";
 }
 
 const Success = ({ form, sections, onRestart }) => {
