@@ -176,19 +176,18 @@ const sections = [
 
 // Helper functions
 function getColorForScore(score) {
-  const percentage = score * 25; 
-
+  const percentage = score * 20;
+  
   if (percentage <= 20) return "#e74c3c";
-  if (percentage <= 40) return "#e67e22"; 
-  if (percentage <= 60) return "#f1c40f"; 
-  if (percentage <= 80) return "#27ae60"; 
-  return "#2980b9"; 
+  if (percentage <= 40) return "#e67e22";
+  if (percentage <= 60) return "#f1c40f";
+  if (percentage <= 80) return "#27ae60";
+  return "#2980b9";
 }
 
 
 function calculateSectionScore(section, form) {
-  let total = 0,
-    count = 0;
+  let total = 0, count = 0;
   section.questions.forEach((q) => {
     const val = form[q.key];
     if (!(q.notApplicableValue && val === q.notApplicableValue)) {
@@ -203,8 +202,7 @@ function calculateSectionScore(section, form) {
 }
 
 function calculateTotalScore(form) {
-  let total = 0,
-    count = 0;
+  let total = 0, count = 0;
   sections.forEach((section) => {
     section.questions.forEach((q) => {
       const val = form[q.key];
@@ -251,10 +249,10 @@ function hexToRgb(hex) {
 }
 
 function getMaturityLevel(score) {
-  const percentage = score * 25;
-
+  const percentage = score * 20;
+  
   if (percentage <= 20) return "Aspirant";
-  if (percentage <= 40) return "Aspiring Performer";
+  if (percentage <= 40) return "Performing Aspirant";
   if (percentage <= 60) return "Performer";
   if (percentage <= 80) return "Front Runner";
   return "Achiever";
@@ -420,7 +418,7 @@ const Success = ({ form, sections, onRestart }) => {
     doc.setFontSize(16);
     doc.setFont(undefined, "bold");
     doc.text(
-       `Overall RegenerativeAgri Farm Score: ${(totalScore * 25).toFixed(2)}%`,
+       `Overall RegenerativeAgri Farm Score: ${(totalScore * 20).toFixed(0)}`,
          centerX,
          startY + 18,
          null,
@@ -446,7 +444,7 @@ const Success = ({ form, sections, onRestart }) => {
       doc.rect(40, startY, pageWidth - 80, 25, "F");
       doc.text(section.title, 50, startY + 17);
       doc.text(
-         `Average Score: ${(sectionScore * 25).toFixed(2)}%`,
+         `Average Score: ${(sectionScore * 25).toFixed(0)}`,
           pageWidth - 50,
           startY + 17,
           null,
@@ -507,7 +505,7 @@ const Success = ({ form, sections, onRestart }) => {
       doc.rect(40, startY, pageWidth - 80, 25, "F");
       doc.text(section.title, 50, startY + 17);
       doc.text(
-        `Average Score: ${(sectionScore * 25).toFixed(2)}%`,
+        `Average Score: ${(sectionScore * 25).toFixed(0)}`,
           pageWidth - 50,
           startY + 17,
           null,
@@ -562,9 +560,9 @@ const Success = ({ form, sections, onRestart }) => {
     doc.setFontSize(13);
     doc.setFont(undefined, "normal");
     const services = [
-      "• Water Body Rejuvenation & Restoration",
-      "• Capacity Building & Behaviour Change",
-      "• Water Positive Program for Urban Built Forms",
+      "• Restoring soil and water health in Agri farms",
+      "• Market connect of Agri Supply of Regen Agri Farmers with Corporate Demand for Agri Inputs",
+      "• Hand holding farmers to Regen farming practices",
     ];
 
     services.forEach((service) => {
@@ -734,7 +732,7 @@ const Success = ({ form, sections, onRestart }) => {
         }}
       >
         <Typography variant="h5" gutterBottom>
-          Overall Farmer Agri Score: {(totalScore * 25).toFixed(2)}%
+          Overall Farmer Agri Score: {(totalScore * 20).toFixed(0)}
         </Typography>
         <Typography variant="h6">Maturity Level: {maturity}</Typography>
       </Box>
@@ -761,7 +759,7 @@ const Success = ({ form, sections, onRestart }) => {
               }}
             >
               <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                {section.title} (Average Score: {(sectionScore * 25).toFixed(2)}%)
+                {section.title} (Average Score: {(sectionScore * 25).toFixed(0)})
               </Typography>
             </Box>
 
