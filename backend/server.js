@@ -117,7 +117,7 @@ app.post("/api/send-pdf-email", upload.single("pdf"), async (req, res) => {
       from: `"Farm Assessment" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: "Your Farm Assessment Report",
-      text: "Please find your assessment report attached",
+      text: "Hi,\n\nCongratulations on taking the first step in becoming a Profitable & Productive Farmer whose practices lead to a rich soil and abundant water.\n\nPlease find your report attached which tells you where your practices are right and where there is scope for change.\n\nContact your local Sanchaalak to learn how to make those changes to become a Profitable & Productive Farmer.\n\nRegards,\nTeam Jal Smruti",
       attachments: [{
         filename: "Farm_Assessment_Report.pdf",
         content: pdf.buffer
