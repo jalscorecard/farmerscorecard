@@ -420,16 +420,17 @@ const Success = ({ form, sections, onRestart }) => {
     doc.setFontSize(16);
     doc.setFont(undefined, "bold");
     doc.text(
-      `Overall RegenerativeAgri Farm Score: ${(totalScore * 25).toFixed(2)}%`
-      centerX,
-      startY + 18,
-      { align: "center" }
-    );
+       `Overall RegenerativeAgri Farm Score: ${(totalScore * 25).toFixed(2)}%`,
+         centerX,
+         startY + 18,
+         null,
+         null,
+         "center"
+       );
+
     doc.setFontSize(14);
     doc.setFont(undefined, "normal");
-    doc.text(`Maturity Level: ${maturityLevel}`, centerX, startY + 34, {
-      align: "center",
-    });
+    doc.text(`Maturity Level: ${maturityLevel}`, centerX, startY + 34, null, null, "center");
 
     startY += 60;
 
@@ -445,11 +446,14 @@ const Success = ({ form, sections, onRestart }) => {
       doc.rect(40, startY, pageWidth - 80, 25, "F");
       doc.text(section.title, 50, startY + 17);
       doc.text(
-        `Average Score: ${(sectionScore * 25).toFixed(2)}%`
-        pageWidth - 50,
-        startY + 17,
-        { align: "right" }
-      );
+         `Average Score: ${(sectionScore * 25).toFixed(2)}%`,
+          pageWidth - 50,
+          startY + 17,
+          null,
+          null,
+          "right"
+          );
+
       startY += 25;
 
       const tableRows = section.questions.map((q) => {
@@ -503,11 +507,14 @@ const Success = ({ form, sections, onRestart }) => {
       doc.rect(40, startY, pageWidth - 80, 25, "F");
       doc.text(section.title, 50, startY + 17);
       doc.text(
-        `Average Score: ${sectionScore.toFixed(2)}`,
-        pageWidth - 50,
-        startY + 17,
-        { align: "right" }
-      );
+        `Average Score: ${(sectionScore * 25).toFixed(2)}%`,
+          pageWidth - 50,
+          startY + 17,
+          null,
+          null,
+          "right"
+        );
+
       startY += 25;
 
       const tableRows = section.questions.map((q) => {
