@@ -420,7 +420,7 @@ const Success = ({ form, sections, onRestart }) => {
     doc.setFontSize(16);
     doc.setFont(undefined, "bold");
     doc.text(
-      `Overall RegenerativeAgri Farm Score: ${overallScore}`,
+      `Overall RegenerativeAgri Farm Score: ${(totalScore * 25).toFixed(2)}%`
       centerX,
       startY + 18,
       { align: "center" }
@@ -445,7 +445,7 @@ const Success = ({ form, sections, onRestart }) => {
       doc.rect(40, startY, pageWidth - 80, 25, "F");
       doc.text(section.title, 50, startY + 17);
       doc.text(
-        `Average Score: ${sectionScore.toFixed(2)}`,
+        `Average Score: ${(sectionScore * 25).toFixed(2)}%`
         pageWidth - 50,
         startY + 17,
         { align: "right" }
