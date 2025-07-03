@@ -29,7 +29,7 @@ function BannerWithHeading() {
           marginBottom: '0',
         }}
       >
-        Jal Smruti Apartment Building Water Scorecard Assessment Input Form
+        Jal Smruti Regenerative Agri Farm Assessment Input Form
       </h1>
     </div>
   );
